@@ -6,25 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css"
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Book Library</title>
-
+     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="container">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item {% if not num_page %} disabled {% endif %}"><a class="page-link"
-                                                                                href="index{{ num_page - 1 }}.html">Предыдущая</a>
+            <li class="page-item {% if not num_page %} disabled {% endif %}">
+                <a class="page-link" {% if num_page - 1 != 0 %}href="index{{ num_page - 1 }}.html"
+                   {% else %}href="index.html" {% endif %}>Предыдущая</a>
             </li>
-            {% for page in range(0,count_pages) %}
-                <li class="page-item {% if num_page == page %}active {% endif %}"><a class="page-link"
-                                                                                     href="index{{ page }}.html">{{ page }}</a>
+
+            {% for page in range(count_pages) %}
+
+                <li class="page-item {% if num_page == page %}active {% endif %}">
+                    <a class="page-link" {% if page == 0 %}href="index.html" {% else %}
+                       href="index{{ page }}.html" {% endif %}>{{ page + 1 }}</a>
                 </li>
             {% endfor %}
-            <li class="page-item {% if num_page == (count_pages-1) %}disabled{% endif %}"><a class="page-link"
-                                                                                             href="index{{ num_page + 1 }}.html">Следующая</a>
+            <li class="page-item {% if num_page == (count_pages-1) %}disabled{% endif %}">
+                <a class="page-link" href="index{{ num_page + 1 }}.html">Следующая</a>
             </li>
         </ul>
     </nav>
@@ -39,8 +43,12 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ book.title }}</h5>
                             <p class="card-text">{{ book.author }}</p>
-                            <a href="{{ book.book_path }}" target="_blank">Читать</a>
-                            <p class="card-text"><small class="text-muted">{{ book.genres }}</small></p>
+                            {% for genre in book.genres %}
+                                <span class="badge badge-pill badge-secondary">{{ genre }}</span>
+                                {% endfor %}
+                            <p></p>
+                            <p><a href="{{ book.book_path }}" target="_blank">Читать</a> </p>
+
                         </div>
                     </div>
                 </div>
@@ -55,13 +63,13 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="static/js/jquery-3.3.1.slim.min.js"
+<script src="/static/js/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-<script src="static/js/popper.min.js"
+<script src="/static/js/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-<script src="static/js/bootstrap.min.js"
+<script src="/static/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>

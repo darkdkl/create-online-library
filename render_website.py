@@ -10,7 +10,8 @@ def rendering(num_page, books_info, count_pages):
     template = env.get_template('template.html')
     rendered_page = template.render(books_info = books_info, num_page = num_page,
                                     count_pages = count_pages)
-    with open(f'index{num_page}.html', 'w', encoding = "utf8") as file:
+    index_name = f'index{num_page}.html' if num_page > 0 else 'index.html'
+    with open(index_name, 'w', encoding = "utf8") as file:
         file.write(rendered_page)
 
 
