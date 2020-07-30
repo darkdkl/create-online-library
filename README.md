@@ -5,8 +5,12 @@
 Данные для работы загружает из books_info.json и подкаталогов в books получаемые с помощью 
 [парсера](https://github.com/darkdkl/books-library-restyle)
 
-Jinja2 для геренации шаблонов
+В проекте используются Jinja2 для геренации шаблонов,
 livereload для локального web сервера
+### Установка
+`
+pip3 install -r req.txt
+`
 
 Демо сайт доступен по адресу:
 https://darkdkl.github.io/create-online-library
