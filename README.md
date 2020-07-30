@@ -13,7 +13,7 @@ pip3 install -r req.txt
 `
 
 Демо сайт доступен по адресу:
-https://darkdkl.github.io/create-online-library
+https://darkdkl.github.io/create-online-library/index.html
 
 ### Как запустить локально 
 `python3 render_website.py
